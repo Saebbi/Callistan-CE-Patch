@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <ThingCategoryDef>
+      <defName>AmmoBoomRocket</defName>
+      <label>Boom Rocket</label>
+      <parent>AmmoAdvanced</parent>
+      <iconPath>UI/Icons/ThingCategories/CaliberCharge</iconPath>
+    </ThingCategoryDef>
+	
+	<!-- ==================== AmmoSet ========================== -->
+
+  <CombatExtended.AmmoSetDef>
+    <defName>AmmoSet_BoomRocket</defName>
+    <label>Boom Rocket</label>
+    <ammoTypes>
+      <Ammo_BoomRocket>Bullet_BoomRocket</Ammo_BoomRocket>
+    </ammoTypes>
+  </CombatExtended.AmmoSetDef>
+	
+	<!-- ==================== Ammo ========================== -->
+
+  <ThingDef Name="BoomRocketBase" ParentName="AmmoBase" Abstract="True">
+    <description>Boom Rocket</description>
+    <statBases>
+	  <Mass>0.01</Mass>
+	  <Bulk>0.02</Bulk>
+    </statBases>
+    <tradeTags>
+      <li>CE_AutoEnableTrade</li>
+      <li>CE_AutoEnableCrafting</li>
+    </tradeTags>
+    <thingCategories>
+      <li>AmmoBoomRocket</li>
+    </thingCategories>
+  </ThingDef>
+
+  <ThingDef ParentName="BoomRocketBase">
+    <defName>Ammo_BoomRocket</defName>
+    <label>Boom Rocket</label>
+    <graphicData>
+      <texPath>Things/Ammo/RPG/HEAT</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+      <MarketValue>2</MarketValue>
+    </statBases>
+    <ammoClass>RocketHEAT</ammoClass>
+	<comps>
+      <li Class="CombatExtended.CompProperties_ExplosiveCE">
+        <explosionDamage>50</explosionDamage>
+        <explosionDamageDef>Bomb</explosionDamageDef>
+        <explosionRadius>8</explosionRadius>
+        <soundExplode>MortarBomb_Explode</soundExplode>
+      </li>
+    </comps>
+  </ThingDef>
+	
+	<!-- ================== Projectiles ================== -->
+
+  <ThingDef Name="BaseBoomRocket" ParentName="BaseBullet" Abstract="true">
+    <graphicData>
+      <texPath>Things/Projectile/Rocket_BigBoom</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <damageDef>Bomb</damageDef>
+	  <explosionRadius>8.0</explosionRadius>
+      <speed>50</speed>
+    </projectile>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBoomRocket">
+    <defName>Bullet_BoomRocket</defName>
+    <label>Boom Rocket</label>
+	<projectile>
+		<explosionRadius>8</explosionRadius>
+		<damageDef>Bomb</damageDef>
+		<damageAmountBase>50</damageAmountBase>
+	</projectile>
+  </ThingDef>
+	
+</Defs>
